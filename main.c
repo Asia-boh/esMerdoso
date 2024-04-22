@@ -57,7 +57,7 @@ int main()
         p[i].x = (float)rand() / RAND_MAX * 10000;
         p[i].y = (float)rand() / RAND_MAX * 10000;
     }
-    stampaPunti(p, nPunti);
+    //stampaPunti(p, nPunti);
     printf("\n\n");
 
     printf("Inserisci il numero di centroidi casuali da generare:\n");
@@ -69,7 +69,7 @@ int main()
         c[i].x = p[puntoRandom].x;
         c[i].y = p[puntoRandom].y;
     }
-    stampaPunti(c, nCentroidi);
+    //stampaPunti(c, nCentroidi);
     printf("\n\n");
 
     struct Punto vecchioCentroide[nCentroidi];
@@ -101,8 +101,12 @@ int main()
             contatoreCentroidi[pos]++;
         }
         for(int i = 0; i < nCentroidi; i++){
-            c[i].x = mediaX[i]/contatoreCentroidi[i];
-            c[i].y = mediaY[i]/contatoreCentroidi[i];
+            if(contatoreCentroidi[i] != 0){
+                c[i].x = mediaX[i]/contatoreCentroidi[i];
+            }
+            if(contatoreCentroidi[i] != 0){
+                c[i].y = mediaY[i]/contatoreCentroidi[i];
+            }
         }
         if(comparaCentroidi(vecchioCentroide, c, nCentroidi) == 0){
             for(int i = 0; i < nCentroidi; i++){
